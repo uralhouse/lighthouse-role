@@ -1,0 +1,14 @@
+---
+# tasks file for lighthouse-role
+- name: Installing git
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - git
+    state: present
+
+- name: Copy Lighthouse to folder
+  become: true
+  ansible.builtin.git:
+    repo: "{{ lighthouse_git }}"
+    dest: "{{ lighthouse_folder }}"
